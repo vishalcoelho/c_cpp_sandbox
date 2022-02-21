@@ -5,6 +5,7 @@
 
 /**
  * @brief Abstact Data Type implmented as a doubly-linked list.
+ * @author Vishal Coelho
  */
 template <typename T>
 struct Node
