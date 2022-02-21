@@ -58,7 +58,18 @@ public:
 
         delete node;
 
-        return (retval);
+        return retval;
+    }
+
+    T peekLast(void)
+    {
+        if (isEmpty())
+            throw std::runtime_error("List is empty");
+
+        Node<T> *node = tail;
+        T retval = tail->data;
+
+        return retval;
     }
 
 private:
