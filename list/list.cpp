@@ -4,9 +4,6 @@
 #include "list.hpp"
 #include "../utils/utils.hpp"
 
-#define PASS (1U)
-#define FAIL (0U)
-
 static int testListIsEmpty(List<int> &listOfInts);
 static int testListHasNNodes(List<int> &listOfInts, int nodeCount);
 

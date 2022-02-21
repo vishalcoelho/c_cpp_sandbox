@@ -42,13 +42,13 @@ public:
 
     DynamicArray() : length(0) { Construct(DEFAULT_DYNAMIC_ARRAY_SIZE); }
 
-    int GetSize() { return length; }
+    int GetSize() const { return length; }
 
-    int GetCapacity() { return capacity; }
+    int GetCapacity() const { return capacity; }
 
-    bool IsEmpty() { return (0 == GetSize()); }
+    bool IsEmpty() const { return (0 == GetSize()); }
 
-    T Get(int index)
+    T Get(int index) const
     {
         if (index >= length)
             throw std::out_of_range("Haven't added enough elements to the array");
@@ -90,7 +90,7 @@ public:
         return retval;
     }
 
-    bool Contains(T value)
+    bool Contains(T value) const
     {
         bool retval = false;
         if (-1 != IndexOf(value))
@@ -122,7 +122,7 @@ private:
         array = new_array;
     }
 
-    int IndexOf(T value)
+    int IndexOf(T value) const
     {
         int retval = -1;
         for (auto i = 0; i < length; i++)

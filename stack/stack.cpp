@@ -4,9 +4,6 @@
 #include "stack.hpp"
 #include "../utils/utils.hpp"
 
-#define PASS (1U)
-#define FAIL (0U)
-
 static void testInitStackCorrect(Stack<int> &stack);
 static void testStackPushPop(Stack<int> &stack);
 static void testStackPeek(Stack<int> &stack);

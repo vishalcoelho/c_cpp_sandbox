@@ -5,6 +5,7 @@
 
 /**
  * @brief Abstract Data Type Queue Implementation using a singly linked list.
+ * @author Vishal Coelho
  * 
  * This queue is implemented with a doubly linked list. It doesn't have a max
  * cap at the moment.
@@ -14,7 +15,7 @@ template <typename T>
 class Queue
 {
 public:
-    int GetSize() { return list.GetSize(); }
+    int GetSize() const { return list.GetSize(); }
 
     void Enqueue(T elem) { list.AddLast(elem); }
 
@@ -25,9 +26,9 @@ public:
         return (list.RemoveFirst());
     }
 
-    bool IsEmpty() { return (list.IsEmpty()); }
+    bool IsEmpty() const { return (list.IsEmpty()); }
 
-    T Peek()
+    T Peek() const
     {
         if (list.IsEmpty())
             throw std::runtime_error("Queue is empty");

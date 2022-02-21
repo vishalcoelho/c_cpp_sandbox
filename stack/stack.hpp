@@ -5,6 +5,7 @@
 
 /**
  * @brief Abstract Data Type Stack Implementation using a singly linked list.
+ * @author Vishal Coelho
  * 
  * This stack is implemented with a doubly linked list. It doesn't have a max
  * cap at the moment.
@@ -14,7 +15,7 @@ template <typename T>
 class Stack
 {
 public:
-    int GetSize() { return list.GetSize(); }
+    int GetSize() const { return list.GetSize(); }
 
     void Push(T elem) { list.AddLast(elem);}
 
@@ -24,9 +25,9 @@ public:
         return (list.RemoveLast());
     }
 
-    bool IsEmpty() { return (list.IsEmpty()); }
+    bool IsEmpty() const { return (list.IsEmpty()); }
 
-    T Peek() {
+    T Peek() const {
         if (list.IsEmpty())
             throw std::runtime_error("Stack is empty");
         return (list.PeekLast());

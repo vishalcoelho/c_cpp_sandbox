@@ -4,9 +4,6 @@
 #include "dynamicarray.hpp"
 #include "../utils/utils.hpp"
 
-#define PASS (1U)
-#define FAIL (0U)
-
 int main(void)
 {
     printStartOfTest();
@@ -85,6 +82,6 @@ int main(void)
     assert(true == da3.Contains(50));
     assert(false == da3.Contains(55));
     printEndOfTest();
-    
+
     return 0;
 }

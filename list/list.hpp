@@ -23,9 +23,9 @@ class List
 public:
     List() : head(NULL), tail(NULL), size(0) {}
 
-    int GetSize() { return size; }
+    int GetSize() const { return size; }
 
-    bool IsEmpty() { return (0 == GetSize()); }
+    bool IsEmpty() const { return (0 == GetSize()); }
 
     void AddLast(T &elem)
     {
@@ -78,7 +78,7 @@ public:
         return retval;
     }
 
-    T PeekLast(void)
+    T PeekLast(void) const
     {
         if (IsEmpty())
             throw std::runtime_error("List is empty");
@@ -89,7 +89,7 @@ public:
         return retval;
     }
 
-    T PeekFirst(void)
+    T PeekFirst(void) const
     {
         if (IsEmpty())
             throw std::runtime_error("List is empty");

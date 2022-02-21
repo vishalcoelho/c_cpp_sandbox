@@ -4,9 +4,6 @@
 #include "queue.hpp"
 #include "../utils/utils.hpp"
 
-#define PASS (1U)
-#define FAIL (0U)
-
 static void testInitQueueCorrect(Queue<int> &queue);
 static void testQueueEnqueueDequeue(Queue<int> &queue);
 static void testQueuePeek(Queue<int> &queue);

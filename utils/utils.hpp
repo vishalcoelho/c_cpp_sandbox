@@ -4,6 +4,9 @@
 #include <stdexcept>
 #include <iostream>
 
+#define PASS (1U)
+#define FAIL (0U)
+
 int cntError = 0;
 
 static void printStartOfTest(void)
