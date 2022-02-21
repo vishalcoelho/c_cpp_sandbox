@@ -11,25 +11,25 @@
  */
 
 template <typename T>
-class Stack : public List<T>
+class Stack
 {
 public:
-    int size() { return list.getSize(); }
+    int GetSize() { return list.GetSize(); }
 
-    void push(T elem) { list.addLast(elem);}
+    void Push(T elem) { list.AddLast(elem);}
 
-    T pop(void) {
-        if (list.isEmpty())
+    T Pop(void) {
+        if (list.IsEmpty())
             throw std::runtime_error("Stack is empty");
-        return (list.removeLast());
+        return (list.RemoveLast());
     }
 
-    bool isEmpty() { return (list.isEmpty()); }
+    bool IsEmpty() { return (list.IsEmpty()); }
 
-    T peek() {
-        if (list.isEmpty())
+    T Peek() {
+        if (list.IsEmpty())
             throw std::runtime_error("Stack is empty");
-        return (list.peekLast());
+        return (list.PeekLast());
     }
 
 private:

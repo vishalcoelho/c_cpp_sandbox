@@ -23,15 +23,15 @@ class List
 public:
     List() : head(NULL), tail(NULL), size(0) {}
 
-    int getSize() { return size; }
+    int GetSize() { return size; }
 
-    bool isEmpty() { return (0 == getSize()); }
+    bool IsEmpty() { return (0 == GetSize()); }
 
-    void addLast(T &elem)
+    void AddLast(T &elem)
     {
         Node<T> *node = new Node<T>(elem);
 
-        if (isEmpty())
+        if (IsEmpty())
         {
             head = node;
         }
@@ -44,14 +44,14 @@ public:
         size++;
     }
 
-    T removeLast(void)
+    T RemoveLast(void)
     {
-        if (isEmpty())
+        if (IsEmpty())
             throw std::runtime_error("List is empty");
 
         Node<T> *node = tail;
 
-        T retval = tail->data;
+        T retval = node->data;
         tail = node->prev;
         node->prev = NULL;
         size--;
@@ -61,13 +61,41 @@ public:
         return retval;
     }
 
-    T peekLast(void)
+    T RemoveFirst(void)
     {
-        if (isEmpty())
+      if (IsEmpty())
+            throw std::runtime_error("List is empty");
+
+        Node<T> *node = head;
+
+        T retval = node->data;
+        head = node->next;
+        node->next = NULL;
+        size--;
+
+        delete node;
+
+        return retval;
+    }
+
+    T PeekLast(void)
+    {
+        if (IsEmpty())
             throw std::runtime_error("List is empty");
 
         Node<T> *node = tail;
-        T retval = tail->data;
+        T retval = node->data;
+
+        return retval;
+    }
+
+    T PeekFirst(void)
+    {
+        if (IsEmpty())
+            throw std::runtime_error("List is empty");
+
+        Node<T> *node = head;
+        T retval = node->data;
 
         return retval;
     }

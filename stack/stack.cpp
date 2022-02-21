@@ -2,20 +2,10 @@
 #include <iostream>
 
 #include "stack.hpp"
+#include "../utils/utils.hpp"
 
 #define PASS (1U)
 #define FAIL (0U)
-
-int cntError = 0;
-
-static void printError(const std::exception &e, int lineNum, const char *function)
-{
-    std::cerr << "Error " << ++cntError
-              << " at [line " << lineNum 
-              << ", funtion " << function
-              << "] : " << e.what() << std::endl;
-}
-
 
 static void testInitStackCorrect(Stack<int> &stack);
 static void testStackPushPop(Stack<int> &stack);
@@ -23,41 +13,42 @@ static void testStackPeek(Stack<int> &stack);
 
 int main(void)
 {
+    printStartOfTest();
     Stack<int> stack;
     testInitStackCorrect(stack);
     testStackPushPop(stack);
     testStackPeek(stack);
-    
+    printEndOfTest();
     return 0;
 }
 
 static void testInitStackCorrect(Stack<int> &stack)
 {
-    assert(0 == stack.size());
-    assert(true == stack.isEmpty());
+    assert(0 == stack.GetSize());
+    assert(true == stack.IsEmpty());
 }
 
 static void testStackPushPop(Stack<int> &stack)
 {
-    stack.push(10);
-    assert(1 == stack.size());
-    stack.push(15);
-    assert(2 == stack.size());
-    stack.push(20);
-    assert(3 == stack.size());
-    stack.push(30);
-    assert(4 == stack.size());
-    assert(30 == stack.pop());
-    assert(3 == stack.size());
-    assert(20 == stack.pop());
-    assert(2 == stack.size());
-    assert(15 == stack.pop());
-    assert(1 == stack.size());
-    assert(10 == stack.pop());
-    assert(0 == stack.size());
+    stack.Push(10);
+    assert(1 == stack.GetSize());
+    stack.Push(15);
+    assert(2 == stack.GetSize());
+    stack.Push(20);
+    assert(3 == stack.GetSize());
+    stack.Push(30);
+    assert(4 == stack.GetSize());
+    assert(30 == stack.Pop());
+    assert(3 == stack.GetSize());
+    assert(20 == stack.Pop());
+    assert(2 == stack.GetSize());
+    assert(15 == stack.Pop());
+    assert(1 == stack.GetSize());
+    assert(10 == stack.Pop());
+    assert(0 == stack.GetSize());
     try
     {
-        (void)stack.pop();
+        (void)stack.Pop();
     }
     catch(const std::runtime_error& e)
     {
@@ -68,19 +59,19 @@ static void testStackPushPop(Stack<int> &stack)
 
 static void testStackPeek(Stack<int> &stack)
 {
-    stack.push(10);
-    stack.push(15);
-    assert(15 == stack.peek());
-    stack.push(20);
-    stack.push(30);
-    assert(30 == stack.peek());
-    (void)stack.pop();
-    (void)stack.pop();
-    (void)stack.pop();
-    (void)stack.pop();
+    stack.Push(10);
+    stack.Push(15);
+    assert(15 == stack.Peek());
+    stack.Push(20);
+    stack.Push(30);
+    assert(30 == stack.Peek());
+    (void)stack.Pop();
+    (void)stack.Pop();
+    (void)stack.Pop();
+    (void)stack.Pop();
     try
     {
-        (void)stack.peek();
+        (void)stack.Peek();
     }
     catch(const std::runtime_error& e)
     {

@@ -27,58 +27,58 @@ public:
         if (0 > capacity)
             throw std::runtime_error("Can't have negative capacity");
 
-        construct(capacity);
+        Construct(capacity);
     }
 
     /* Looks like i cant have the default constructor call the override;
      * if i try to create an obj(2) it ends up calling this contructor recursively
      * till i run out of stack.
      *
-     * Ended up writing a common private construct function that gets called int
+     * Ended up writing a common private Construct function that gets called int
      * both constructors.
      *
      * DynamicArray() { DynamicArray(DEFAULT_DYNAMIC_ARRAY_SIZE); }
      */
 
-    DynamicArray() : length(0) { construct(DEFAULT_DYNAMIC_ARRAY_SIZE); }
+    DynamicArray() : length(0) { Construct(DEFAULT_DYNAMIC_ARRAY_SIZE); }
 
-    int getSize() { return length; }
+    int GetSize() { return length; }
 
-    int getCapacity() { return capacity; }
+    int GetCapacity() { return capacity; }
 
-    bool isEmpty() { return (0 == getSize()); }
+    bool IsEmpty() { return (0 == GetSize()); }
 
-    T get(int index)
+    T Get(int index)
     {
         if (index >= length)
             throw std::out_of_range("Haven't added enough elements to the array");
         return array[index];
     }
 
-    void set(int index, T value)
+    void Set(int index, T value)
     {
         if (index >= length)
             throw std::out_of_range("Haven't added enough elements to the array");
         array[index] = value;
     }
 
-    void clear()
+    void Clear()
     {
         memset(array, 0, capacity);
         length = 0;
     }
 
-    void append(T value)
+    void Append(T value)
     {
         if (length == capacity)
         {
-            doubleCapacity();
-            resizeArray();
+            DoubleCapacity();
+            ResizeArray();
         }
         array[length++] = value;
     }
 
-    T removeAt(int index)
+    T RemoveAt(int index)
     {
         if (index > length)
             throw std::out_of_range("Exceeded bounds.");
@@ -90,22 +90,22 @@ public:
         return retval;
     }
 
-    bool contains(T value)
+    bool Contains(T value)
     {
         bool retval = false;
-        if (-1 != indexOf(value))
+        if (-1 != IndexOf(value))
             retval = true;
         return retval;
     }
 
 private:
-    void construct(int capacity)
+    void Construct(int capacity)
     {
         this->capacity = capacity;
         this->array = new T[capacity];
     }
 
-    void doubleCapacity(void)
+    void DoubleCapacity(void)
     {
         if (0 == capacity)
             capacity = 1;
@@ -113,7 +113,7 @@ private:
             capacity *= 2;
     }
 
-    void resizeArray(void)
+    void ResizeArray(void)
     {
         T *new_array = new T[capacity];
         std::copy(array, array + length, new_array);
@@ -122,7 +122,7 @@ private:
         array = new_array;
     }
 
-    int indexOf(T value)
+    int IndexOf(T value)
     {
         int retval = -1;
         for (auto i = 0; i < length; i++)
