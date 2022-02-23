@@ -5,8 +5,8 @@
 #include "../utils/utils.hpp"
 
 static void testALInitCorrect(ArrayList<int> &arraylist, int size);
-static void testALAddGetSet
-(ArrayList<int> &arraylist);
+static void testALAddGetSet(ArrayList<int> &arraylist);
+static void testALClear(ArrayList<int> &array);
 
 int main (void)
 {
@@ -16,15 +16,15 @@ int main (void)
     ArrayList<int> array2(5);
     testALInitCorrect(array2, 5);
     ArrayList<int> array3(2);
-    testALAddGetSet
-    (array3);
+    testALAddGetSet(array3);
+    testALClear(array3);
     printEndOfTest();
     return 0;
 }
 
 static void testALInitCorrect(ArrayList<int> &arraylist, int size)
 {
-    assert(size == arraylist.GetSize());
+    assert(0 == arraylist.GetSize());
     assert(size == arraylist.GetCapacity());
 }
 
@@ -64,4 +64,19 @@ static void testALAddGetSet
     {
         printError(e, __LINE__, __FUNCTION__);
     }
+}
+
+static void testALClear(ArrayList<int> &array)
+{
+    array.Clear();
+    assert(0 == array.GetSize());
+    try
+    {
+        (void)array.Get(0);
+    }
+    catch(const std::out_of_range& e)
+    {
+        printError(e, __LINE__, __FUNCTION__);
+    }
+    
 }
