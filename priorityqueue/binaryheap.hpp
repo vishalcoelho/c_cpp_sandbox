@@ -105,7 +105,7 @@ public:
      * 
      * Takes O(log2(n)) to complete.
      */
-    T poll(void){
+    T Poll(void){
         return RemoveAt(ROOT);
     }
 
@@ -127,14 +127,14 @@ public:
         int leftChild = 2 * parent + 1;
         int rightChild = 2 * parent + 2;
 
-        // Assuming int in the format specifier.
-        printf("[P@%d:%d, L@%d:%d, R@%d:%d]", parent, arrayList->Get(parent),
-        leftChild, arrayList->Get(leftChild), rightChild, arrayList->Get(rightChild));
-
+        // eval L->R so second predicate is never evaluated if first is false.
         if ((leftChild < size) && (!LessThan(parent, leftChild)))
             return false;
         if ((rightChild < size) && (!LessThan(parent, rightChild)))
             return false;
+
+        // Assuming int in the format specifier.
+        printf("[N@%d:%d]\n", parent, arrayList->Get(parent));
 
         // Recurse on the children.
         return (IsMinHeap(leftChild) && IsMinHeap(rightChild));
@@ -158,7 +158,7 @@ private:
     
     T RemoveAt(int index)
     {
-        T removedNodeValue = nullptr;
+        T removedNodeValue = (T)INT64_MAX;
         if(!IsEmpty())
         {
             removedNodeValue = arrayList->Get(index);
@@ -168,7 +168,7 @@ private:
             Swap(index, lastLeafOnRight);
 
             // Destroy last leaf on right.
-            arrayList->Set(lastLeafOnRight, nullptr);
+            arrayList->Set(lastLeafOnRight, (T)INT64_MAX);
             size--;
 
             if(index == lastLeafOnRight)

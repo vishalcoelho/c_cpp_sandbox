@@ -7,6 +7,7 @@
 static void testPQInitCorrect(BinaryHeap<int> &heap);
 static void testPQInitCorrect(BinaryHeap<int> &heap, int size);
 static void testPQAddAndSwim(BinaryHeap<int> &heap);
+static void testPQPollAndSink(BinaryHeap<int> &heap);
 
 int main (void)
 {
@@ -45,4 +46,26 @@ static void testPQAddAndSwim(BinaryHeap<int> &heap)
     heap.Add(0);
 
     assert(true == heap.IsMinHeap(0));
+}
+
+static void testPQPollAndSink(BinaryHeap<int> &heap)
+{
+    heap.Add(4);
+    heap.Add(3);
+    heap.Add(2);
+    heap.Add(1);
+    heap.Add(0);
+
+    assert(0 == heap.Poll());
+    assert(true == heap.IsMinHeap(0));
+    assert(1 == heap.Poll());
+    assert(true == heap.IsMinHeap(0));
+    assert(3 == heap.Poll());
+    assert(true == heap.IsMinHeap(0));
+    assert(4 == heap.Poll());
+    assert(true == heap.IsMinHeap(0));
+    assert(2 == heap.Poll());
+    assert(true == heap.IsMinHeap(0));
+
+    assert(INT64_MAX == heap.Poll());
 }
