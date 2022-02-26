@@ -23,6 +23,7 @@ static void testInitQueueCorrect(Queue<int> &queue)
 {
     assert(0 == queue.GetSize());
     assert(true == queue.IsEmpty());
+    printPass(__FUNCTION__);
 }
 
 static void testQueueEnqueueDequeue(Queue<int> &queue)
@@ -49,9 +50,9 @@ static void testQueueEnqueueDequeue(Queue<int> &queue)
     }
     catch(const std::runtime_error& e)
     {
-        printError(e, __LINE__, __FUNCTION__);
+        printException(e, __LINE__, __FUNCTION__);
     }
-    
+    printPass(__FUNCTION__);
 }
 
 static void testQueuePeek(Queue<int> &queue)
@@ -72,6 +73,7 @@ static void testQueuePeek(Queue<int> &queue)
     }
     catch(const std::runtime_error& e)
     {
-        printError(e, __LINE__, __FUNCTION__);
-    }    
+        printException(e, __LINE__, __FUNCTION__);
+    }
+    printPass(__FUNCTION__);
 }

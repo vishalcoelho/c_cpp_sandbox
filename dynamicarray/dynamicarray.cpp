@@ -20,7 +20,7 @@ int main(void)
     }
     catch (const std::runtime_error &e)
     {
-        printError(e, __LINE__, __FUNCTION__);
+        printException(e, __LINE__, __FUNCTION__);
     }
 
     /* Test 3: Setting value at an index beyond length of the array should throw an exception. */
@@ -30,7 +30,7 @@ int main(void)
     }
     catch (const std::out_of_range &e)
     {
-        printError(e, __LINE__, __FUNCTION__);
+        printException(e, __LINE__, __FUNCTION__);
     }
 
     /* Test 4: Create a DA of capactiy 2, add 3 elements and make sure it doubles in capacity. */
@@ -61,7 +61,7 @@ int main(void)
     }
     catch (const std::out_of_range &e)
     {
-        printError(e, __LINE__, __FUNCTION__);
+        printException(e, __LINE__, __FUNCTION__);
     }
 
     /* Test 5: Remove an element from the DA and make sure the array is shifted up. */
@@ -75,7 +75,7 @@ int main(void)
     }
     catch (const std::out_of_range &e)
     {
-        printError(e, __LINE__, __FUNCTION__);
+        printException(e, __LINE__, __FUNCTION__);
     }
 
     /* Test 6: Check that Contains only finds values within the legal length of the DA. */

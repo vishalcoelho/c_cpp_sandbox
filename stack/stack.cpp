@@ -23,6 +23,7 @@ static void testInitStackCorrect(Stack<int> &stack)
 {
     assert(0 == stack.GetSize());
     assert(true == stack.IsEmpty());
+    printPass(__FUNCTION__);
 }
 
 static void testStackPushPop(Stack<int> &stack)
@@ -49,9 +50,9 @@ static void testStackPushPop(Stack<int> &stack)
     }
     catch(const std::runtime_error& e)
     {
-        printError(e, __LINE__, __FUNCTION__);
+        printException(e, __LINE__, __FUNCTION__);
     }
-    
+    printPass(__FUNCTION__);
 }
 
 static void testStackPeek(Stack<int> &stack)
@@ -72,6 +73,7 @@ static void testStackPeek(Stack<int> &stack)
     }
     catch(const std::runtime_error& e)
     {
-        printError(e, __LINE__, __FUNCTION__);
-    }    
+        printException(e, __LINE__, __FUNCTION__);
+    }
+    printPass(__FUNCTION__);
 }

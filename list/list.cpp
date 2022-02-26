@@ -4,20 +4,20 @@
 #include "list.hpp"
 #include "../utils/utils.hpp"
 
-static int testListIsEmpty(List<int> &listOfInts);
-static int testListHasNNodes(List<int> &listOfInts, int nodeCount);
+static void testListIsEmpty(List<int> &listOfInts);
+static void testListHasNNodes(List<int> &listOfInts, int nodeCount);
 
 int main(void)
 {
     printStartOfTest();
     List<int> listOfInts;
-    assert(PASS == testListIsEmpty(listOfInts));
+    testListIsEmpty(listOfInts);
 
     int x = 20, y = 25, z = 30;
     listOfInts.AddLast(x);
     listOfInts.AddLast(y);
     listOfInts.AddLast(z);
-    assert(PASS == testListHasNNodes(listOfInts, 3));
+    testListHasNNodes(listOfInts, 3);
 
     assert(30 == listOfInts.RemoveLast());
     assert(25 == listOfInts.RemoveLast());
@@ -28,28 +28,20 @@ int main(void)
     }
     catch(const std::runtime_error& e)
     {
-        printError(e, __LINE__, __FUNCTION__);
+        printException(e, __LINE__, __FUNCTION__);
     }
     printEndOfTest();
     return 0;
 }
 
-static int testListIsEmpty(List<int> &listOfInts)
+static void testListIsEmpty(List<int> &listOfInts)
 {
-    int retval = FAIL;
-
-    if (listOfInts.IsEmpty())
-        retval = PASS;
-
-    return (retval);
+    assert(true == listOfInts.IsEmpty());
+    printPass(__FUNCTION__);
 }
 
-static int testListHasNNodes(List<int> &listOfInts, int nodeCount)
+static void testListHasNNodes(List<int> &listOfInts, int nodeCount)
 {
-    int retval = FAIL;
-
-    if (nodeCount == listOfInts.GetSize())
-        retval = PASS;
-
-    return (retval);
+    assert(nodeCount == listOfInts.GetSize());
+    printPass(__FUNCTION__);
 }

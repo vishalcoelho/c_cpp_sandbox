@@ -29,12 +29,14 @@ static void testPQInitCorrect(BinaryHeap<int> &heap)
 {
     assert(0 == heap.GetSize());
     assert(0 == heap.GetCapacity());
+    printPass(__FUNCTION__);
 }
 
 static void testPQInitCorrect(BinaryHeap<int> &heap, int size)
 {
     assert(0 == heap.GetSize());
     assert(size == heap.GetCapacity());
+    printPass(__FUNCTION__);
 }
 
 static void testPQAddAndSwim(BinaryHeap<int> &heap)
@@ -46,6 +48,7 @@ static void testPQAddAndSwim(BinaryHeap<int> &heap)
     heap.Add(0);
 
     assert(true == heap.IsMinHeap(0));
+    printPass(__FUNCTION__);
 }
 
 static void testPQPollAndSink(BinaryHeap<int> &heap)
@@ -68,4 +71,5 @@ static void testPQPollAndSink(BinaryHeap<int> &heap)
     assert(true == heap.IsMinHeap(0));
 
     assert(INT64_MAX == heap.Poll());
+    printPass(__FUNCTION__);
 }

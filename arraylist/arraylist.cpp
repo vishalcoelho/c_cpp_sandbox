@@ -40,7 +40,7 @@ static void testALAddGetSet
     }
     catch(const std::out_of_range& e)
     {
-        printError(e, __LINE__, __FUNCTION__);
+        printException(e, __LINE__, __FUNCTION__);
     }
     assert(10 == arraylist.Get(0));
     assert(20 == arraylist.Get(1));
@@ -53,7 +53,7 @@ static void testALAddGetSet
     }
     catch(const std::out_of_range& e)
     {
-        printError(e, __LINE__, __FUNCTION__);
+        printException(e, __LINE__, __FUNCTION__);
     }
 
     try
@@ -62,7 +62,7 @@ static void testALAddGetSet
     }
     catch(const std::out_of_range& e)
     {
-        printError(e, __LINE__, __FUNCTION__);
+        printException(e, __LINE__, __FUNCTION__);
     }
 }
 
@@ -76,7 +76,7 @@ static void testALClear(ArrayList<int> &array)
     }
     catch(const std::out_of_range& e)
     {
-        printError(e, __LINE__, __FUNCTION__);
+        printException(e, __LINE__, __FUNCTION__);
     }
     
 }
