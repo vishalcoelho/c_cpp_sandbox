@@ -1,11 +1,23 @@
 #include <iostream>
 
+#if defined(CMAKE_BUILD)
 #include "sort/simple.hpp"
 #include "sort/selection.hpp"
 #include "sort/bubble.hpp"
 #include "sort/insertion.hpp"
 #include "sort/merge.hpp"
+#include "sort/quick.hpp"
 #include "sort/utils.hpp"
+#else
+// For VSCODE debugging--I dont know how to add an include folder :-(
+#include "simple.hpp"
+#include "selection.hpp"
+#include "bubble.hpp"
+#include "insertion.hpp"
+#include "merge.hpp"
+#include "quick.hpp"
+#include "utils.hpp"
+#endif //  defined(CMAKE_BUILD)
 
 int main(void)
 {
@@ -51,6 +63,11 @@ int main(void)
     memcpy(arrToSort, arrToSortShadow, sizeof(arrToSortShadow));
     u.PrintArray();
     u.Benchmark(Sort_merge);
+    u.PrintArray();
+
+    memcpy(arrToSort, arrToSortShadow, sizeof(arrToSortShadow));
+    u.PrintArray();
+    u.Benchmark(Sort_quick);
     u.PrintArray();
 
     return 0;

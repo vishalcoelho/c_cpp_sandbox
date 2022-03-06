@@ -5,6 +5,9 @@ set(SORT_ROOT_DIR ..)
 
 set(HEADERS simple.hpp selection.hpp bubble.hpp insertion.hpp merge.hpp utils.hpp common.h)
 set(SOURCES sort.cpp)
+
+add_compile_definitions(CMAKE_BUILD)
+
 add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
 target_include_directories(${PROJECT_NAME} PRIVATE ${SORT_ROOT_DIR})
 
