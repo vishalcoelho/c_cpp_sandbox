@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 2.4)
+project(hashtable)
+set(SOURCES hashtable.c)
+set(HEADERS hashtable.h)
+add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
