@@ -1,0 +1,86 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "clean_design_patterns_build",
+            "type": "shell",
+            "command": "if [ -e ${input:design_patterns_folder}/build ]; then rm -rf ${input:design_patterns_folder}/build; fi",
+            "options": {
+                "cwd": "${workspaceRoot}/c/design_patterns"
+            },
+        },
+        {
+            "label": "mkdir_design_patterns_build",
+            "type": "shell",
+            "command": "mkdir",
+            "options": {
+                "cwd": "${workspaceRoot}/c/design_patterns"
+            },
+            "args": [
+                "${input:design_patterns_folder}/build"
+            ],
+            "dependsOn": "clean_design_patterns_build"
+        },
+        {
+            "label": "cmake_design_patterns",
+            "type": "shell",
+            "command": "cmake",
+            "options": {
+                "cwd": "${workspaceRoot}/c/design_patterns",
+            },
+            "args": [
+                "-G",
+                "'MinGW Makefiles'",
+                "-S",
+                "${input:design_patterns_folder}",
+                "-B",
+                "${input:design_patterns_folder}/build",
+                "-D",
+                "CMAKE_BUILD_TYPE=Debug"
+            ],
+            "dependsOn": "mkdir_design_patterns_build",
+        },
+
+        {
+            "label": "cmake_and_build_design_patterns",
+            "type": "shell",
+            "command": "make",
+            "options": {
+                "cwd": "${workspaceRoot}/c/design_patterns/${input:design_patterns_folder}/build"
+            },
+            "args": [
+                "all",
+            ],
+            "problemMatcher": "$gcc",
+            "dependsOn": "cmake_design_patterns"
+
+        },
+
+        {
+            "label": "build_design_patterns",
+            "type": "shell",
+            "command": "make",
+            "options": {
+                "cwd": "${workspaceRoot}/c/design_patterns/${input:design_patterns_folder}/build"
+            },
+            "args": [
+                "all",
+            ],
+            "problemMatcher": "$gcc",
+        }
+    ],
+
+    "inputs": [
+        {
+            "id": "design_patterns_folder",
+            "description": "Pick which executable to build",
+            "default": "subclassing_with_queue",
+            "type": "pickString",
+            "options": [
+                "subclassing_with_queue"
+            ]
+        }
+    ]
+}

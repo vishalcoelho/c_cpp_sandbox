@@ -1,0 +1,80 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug (gdb) with Build",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}\\c\\design_patterns\\${input:design_patterns_folder}\\build\\${input:design_patterns_folder}.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [
+                // NOTE: I cant seem to use ${env:DESIGN_PATTERN_FOLDER} in tasks.json, it doesn't inherit.
+                // {
+                //     "name": "DESIGN_PATTERN_FOLDER",
+                //     "value": "${input:design_patterns_folder}"
+                // }
+            ],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "miDebuggerPath": "C:\\msys64\\ucrt64\\bin\\gdb.exe",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Set Disassembly Flavor to Intel",
+                    "text": "-gdb-set disassembly-flavor intel",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "build_design_patterns"
+        },
+        {
+            "name": "Debug (gdb) with CMake and Build",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}\\c\\design_patterns\\${input:design_patterns_folder}\\build\\${input:design_patterns_folder}.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "miDebuggerPath": "C:\\msys64\\ucrt64\\bin\\gdb.exe",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Set Disassembly Flavor to Intel",
+                    "text": "-gdb-set disassembly-flavor intel",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "cmake_and_build_design_patterns"
+        }
+
+    ],
+
+    "inputs": [
+        {
+            "id": "design_patterns_folder",
+            "description": "Pick which executable to build",
+            "default": "subclassing_with_queue",
+            "type": "pickString",
+            "options": [
+                "subclassing_with_queue"
+            ]
+        }
+    ]
+
+}
