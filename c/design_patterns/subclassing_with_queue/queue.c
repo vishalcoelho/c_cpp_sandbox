@@ -22,8 +22,8 @@ void Queue_insert(Queue* const me, int k)
 {
     if (!me->is_full(me))
     {
-        me->head = (me->head + 1) % QUEUE_SIZE;
         me->buffer[me->head] = k;
+        me->head = (me->head + 1) % QUEUE_SIZE;
         ++me->size;
     }
 }
