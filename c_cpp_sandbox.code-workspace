@@ -9,7 +9,12 @@
             "*.cc": "cpp",
             "stdio.h": "c",
             "queue.h": "c",
-            "limits.h": "c"
+            "limits.h": "c",
+            "algorithm": "c",
+            "format": "c",
+            "xiosbase": "c",
+            "xlocale": "c",
+            "xutility": "c"
         }
     }
 }

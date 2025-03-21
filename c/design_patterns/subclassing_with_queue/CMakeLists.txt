@@ -19,8 +19,19 @@ project(subclassing_with_queue)
 set(SUBCLASSING_ROOT_DIR ..)
 # add_compile_definitions(DEBUG=1)
 
-set(HEADERS queue.h)
-set(SOURCES queue.c test_queue.c)
+# Cache variable that is set at the command line
+set(BUILD_BASE_CLASS_TEST False CACHE BOOL "Build the base class test")
+
+# Invoke CMake with -DBUILD_QUEUE to build just the base class and test
+if (${BUILD_BASE_CLASS_TEST})
+    message(STATUS "Building base queue class and its test")
+    set(HEADERS queue.h)
+    set(SOURCES queue.c test_queue.c)
+else()
+    message(STATUS "Building derived cached queue class and its test")
+    set(HEADERS queue.h cached_queue.h)
+    set(SOURCES queue.c cached_queue.c test_cached_queue.c)
+endif()
 
 add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
 target_include_directories(${PROJECT_NAME} PRIVATE ${SUBCLASSING_ROOT_DIR})

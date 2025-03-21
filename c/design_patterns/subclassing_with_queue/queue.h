@@ -57,7 +57,7 @@ typedef struct Queue Queue;
  */
 struct Queue
 {
-    int buffer[QUEUE_SIZE];
+    int buffer[QUEUE_SIZE]; // Insert buffer
     int head;
     int tail;
     int size;

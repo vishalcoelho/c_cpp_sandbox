@@ -38,7 +38,8 @@
                 "-B",
                 "${input:design_patterns_folder}/build",
                 "-D",
-                "CMAKE_BUILD_TYPE=Debug"
+                "CMAKE_BUILD_TYPE=Debug",
+                "${input:cmake_args}"
             ],
             "dependsOn": "mkdir_design_patterns_build",
         },
@@ -81,6 +82,17 @@
             "options": [
                 "subclassing_with_queue"
             ]
+        },
+        {
+            "id": "cmake_args",
+            "description": "Additional arguments to cmake",
+            "default": "",
+            "type": "pickString",
+            "options": [
+                "",
+                "-DBUILD_BASE_CLASS_TEST:BOOL=True"
+            ]
+
         }
     ]
 }
