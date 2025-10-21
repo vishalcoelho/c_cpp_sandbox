@@ -34,8 +34,14 @@ Restart vscode (or just the integrated terminal) and type `which gcc`, you shoul
     `cmake -S . -B build`
 3. This is generating a MSVS project for me. You can instead change the generator to minGW (assuming you already donwloaded it)
    `cmake -G "MinGW Makefiles" -S . -B build`
-   1. You can use the 'clean' option to clear out the cmake files in a project
-      `cmake --build build --target clean`
+
+
+   > :memo: Use the `-DCMAKE_BUILD_TYPE=Debug` option to build an executable that you can debug with
+   > `cmake -G "MinGW Makefiles" -DCMAKE_BUILD_TYPE=Debug -S . -B build`
+
+   > :memo: You can use the 'clean' option to clear out the cmake files in a project
+   > `cmake --build build --target clean`
+
 4. cd to the build directory and then run make to build the target executable.
    `cd build; make`
 

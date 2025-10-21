@@ -14,7 +14,13 @@
             "format": "c",
             "xiosbase": "c",
             "xlocale": "c",
-            "xutility": "c"
-        }
+            "xutility": "c",
+            "list.h": "c"
+        },
+        "github.copilot.enable": {
+            "*": false,
+            "makefile": true
+        },
+        "github.copilot.nextEditSuggestions.enabled": true
     }
 }
