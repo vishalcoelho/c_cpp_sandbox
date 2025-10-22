@@ -8,7 +8,7 @@
             "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}\\c\\data_structures\\queue\\build\\queue.exe",
+            "program": "${workspaceFolder}\\c\\data_structures\\${input:c_data_structures_folder}\\build\\${input:c_data_structures_folder}.exe",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
@@ -99,6 +99,17 @@
             "options": [
                 "subclassing_with_queue"
             ]
+        },
+        {
+            "id": "c_data_structures_folder",
+            "description": "Pick which executable to build",
+            "default": "queue",
+            "type": "pickString",
+            "options": [
+                "queue",
+                "stack"
+            ]
+
         }
     ]
 
