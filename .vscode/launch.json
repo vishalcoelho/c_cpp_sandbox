@@ -107,7 +107,8 @@
             "type": "pickString",
             "options": [
                 "queue",
-                "stack"
+                "stack",
+                "linked_list"
             ]
 
         }
