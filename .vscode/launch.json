@@ -8,6 +8,31 @@
             "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
+            "program": "${workspaceFolder}/cpp/cracking_the_coding_interview/classes_review/build/Class.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "miDebuggerPath": "C:\\msys64\\ucrt64\\bin\\gdb.exe",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Set Disassembly Flavor to Intel",
+                    "text": "-gdb-set disassembly-flavor intel",
+                    "ignoreFailures": true
+                }
+            ]
+        },
+        {
+            "name": "Debug (gdb) C Data Structures",
+            "type": "cppdbg",
+            "request": "launch",
             "program": "${workspaceFolder}\\c\\data_structures\\${input:c_data_structures_folder}\\build\\${input:c_data_structures_folder}.exe",
             "args": [],
             "stopAtEntry": false,

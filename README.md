@@ -10,6 +10,8 @@ Table of Contents<!-- omit in toc -->
 - [Configuring MinGW](#configuring-mingw)
 - [Building the Projects](#building-the-projects)
 - [Debugging in Visual Studio Code](#debugging-in-visual-studio-code)
+- [Debugging FAQ](#debugging-faq)
+  - [Segmentation Fault Running C++ Code](#segmentation-fault-running-c-code)
 - [Data Structures in C](#data-structures-in-c)
 - [Design Patterns in C](#design-patterns-in-c)
 
@@ -76,6 +78,35 @@ Restart vscode (or just the integrated terminal) and type `which gcc`, you shoul
     > :memo: Both builds are built with debug symbols enabled. For production, remove `CMAKE_BUILD_TYPE=Debug` from the cmake task in tasks.json
 
 8. Set a breakpoint in code and run either of these configurations to debug.
+
+---
+## Debugging FAQ
+
+### Segmentation Fault Running C++ Code
+
+I have a simple piece of code and ran into a seg fault.
+
+```C
+int main(void)
+{
+    cout << "Review of Classes" << endl;
+    return 0;
+}
+```
+
+![Seg Fault](/doc/assets/seg_fault_cpp.png)
+
+The problem seems to be the `libstdc++-6.dll` that is being loaded into memory prior to execution. We need the one from *"C:\msys64\ucrt64\bin\libstdc++-6.dll"*. Lets add the *ucrt64/bin* to the system path higher than Git.
+
+Add this to `.bashrc`
+
+```bash
+cat >> ~/.bashrc
+export PATH=/c/msys64/ucrt64/bin:${PATH}
+```
+When you run again, you should see the right dll being loaded and no more seg faults
+
+![Seg Fault Fixed](/doc/assets/seg_fault_cpp_fixed.png)
 
 ---
 

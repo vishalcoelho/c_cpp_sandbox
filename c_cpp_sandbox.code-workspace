@@ -15,7 +15,8 @@
             "xiosbase": "c",
             "xlocale": "c",
             "xutility": "c",
-            "list.h": "c"
+            "list.h": "c",
+            "iostream": "cpp"
         },
         "github.copilot.enable": {
             "*": false,
